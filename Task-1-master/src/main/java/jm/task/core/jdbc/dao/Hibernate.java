@@ -28,7 +28,7 @@ public class Hibernate {
 
     public <R> R funct(Function<Session, R> function) {
 
-        try (Session session = sessionFactory.openSession();) {
+        try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
 
             try {
@@ -45,28 +45,4 @@ public class Hibernate {
             }
         }
     }
-    //    public void command(Consumer<Session> function) {
-//        Session session = null;
-//        Transaction transaction = null;
-//
-//        try {
-//            session = SessionManager.getSessionFactory().openSession();
-//            transaction = session.beginTransaction();
-//            function.accept(session);
-//            transaction.commit();
-//        } catch (Exception e) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//                //logger.info("Транзакция откатана", e);
-//            }
-//            //logger.error("Ошибка при выполнении операции", e);
-//            throw new RuntimeException("Ошибка" + e);
-//        } finally {
-//            if (session != null) {
-//                session.close();
-//                //logger.debug("Сессия завершена");
-//            }
-//
-//        }
-//    }
 }

@@ -41,7 +41,6 @@ public class UserDaoJDBCImpl implements UserDao {
             } catch (SQLException e) {
                 throw new RuntimeException("Ошибка вставки пользователя" + name + e);
             }
-            ;
             logger.info("Пользователь " + name + " был добавлен в БД");
         });
     }
@@ -62,7 +61,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
         return jdbc.executeQuery(connection -> {
             try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL);
-                 ResultSet resultSet = preparedStatement.executeQuery();) {
+                 ResultSet resultSet = preparedStatement.executeQuery()) {
 
                 while (resultSet.next()) {
                     users.add(new User(

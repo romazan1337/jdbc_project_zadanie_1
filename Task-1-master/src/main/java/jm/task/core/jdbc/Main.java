@@ -1,11 +1,9 @@
 package jm.task.core.jdbc;
 
-
 import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -14,7 +12,7 @@ public class Main {
 
     //private static final Logger logger = Logger.getLogger(Main.class.getName());
 
-    public static void main(String[] args) throws SQLException, IOException {
+    public static void main(String[] args) {
 
         UserDaoHibernateImpl userDaoHibernate = new UserDaoHibernateImpl(Util.getSessionFactory());
 
@@ -27,24 +25,12 @@ public class Main {
         userDAO.saveUser("Kamal", "Firsov", (byte) 24);
         userDAO.saveUser("Max", "Korobeinikov", (byte) 15);
         userDAO.saveUser("Roman", "Melonov", (byte) 18);
-//
-//        List<User> users = userDaoHibernate.getAllUsers();
-//        System.out.println("\nВсе пользователи:");
-//        for (User u : users) {
-//            System.out.println(u);
-//        }
-//
-//        userDAO.cleanUsersTable();
-//
-//        userDAO.dropUsersTable();
-//
-//        SessionManager.testConnection();
 
-//        UserDaoHibernateImpl userDaoHibernate = new UserDaoHibernateImpl(SessionManager.getSessionFactory());
-//
-//        userDaoHibernate.createUsersTable();
-
-
+        List<User> users = userDaoHibernate.getAllUsers();
+        System.out.println("\nВсе пользователи:");
+        for (User u : users) {
+            System.out.println(u);
+        }
     }
 
 //    private static void saveImage() throws SQLException, IOException {
